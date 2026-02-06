@@ -1,0 +1,59 @@
+name: Jellyfin Sync
+description: Point-scan/refresh a Jellyfin item when a scene is updated in Stash. Supports exact file-path scan and optional metadata refresh.
+version: 0.2.13
+url: https://example.invalid/jellyfin-sync
+exec:
+  - python3
+  - "{pluginDir}/JellyfinSync.py"
+interface: raw
+settings:
+  jellyfinBaseUrl:
+    displayName: Jellyfin base URL
+    description: "Example: http://192.168.1.161:8096 (no trailing slash)"
+    type: STRING
+  jellyfinApiKey:
+    displayName: Jellyfin API key
+    description: Jellyfin API key (Dashboard → API Keys).
+    type: STRING
+  jellyfinUserId:
+    displayName: Jellyfin userId (optional)
+    description: Used only for fallback search. If empty, the plugin tries to auto-pick the first admin user via /Users.
+    type: STRING
+  verifyTls:
+    displayName: Verify TLS certificates
+    description: Enable if you have a valid certificate. If false, TLS errors are ignored (common for local/self-signed).
+    type: BOOLEAN
+
+  skipUnorganized:
+    displayName: Do not process scenes that are not marked as "organized"
+    description: "Default: OFF. If enabled, the plugin will skip scenes where Organized=false."
+    type: BOOLEAN
+
+  storeJellyfinUrl:
+    displayName: Store Jellyfin Web UI link in Stash scene URLs
+    description: "Adds a clickable link like /web/index.html#!/details?id=<ItemId>&serverId=<ServerId> to scene.urls."
+    type: BOOLEAN
+  jellyfinWebBaseUrl:
+    displayName: Jellyfin Web base URL (optional)
+    description: "Use if Web UI is on a different host/proxy than API. Example: https://jellyfin.example.org"
+    type: STRING
+  jellyfinServerId:
+    displayName: Jellyfin serverId (optional)
+    description: "If empty, the plugin tries /System/Info to auto-detect serverId for Web links."
+    type: STRING
+
+  fallbackFilenameNoQuality:
+    displayName: "Fallback: also try filename without quality suffix"
+    description: "Default: ON. If a Jellyfin item has not been identified yet, Jellyfin may set its title from the filename and drop a trailing quality marker like ' - [WEBDL-1080p]'. When enabled, the plugin will also try that cleaned filename variant if search by scene title/filename fails."
+    type: BOOLEAN
+
+  fallbackFilenameTruncated:
+    displayName: "Fallback: also try truncated filename"
+    description: "Default: ON. If Jellyfin stored a shortened title from the filename (e.g. '2026-02-01 - Studio - February'), the plugin will also try short variants derived from the filename (first 3 segments and the first word of the 3rd segment; also trims 3rd segment at the first digit)."
+    type: BOOLEAN
+
+hooks:
+  - name: Scene update
+    description: Trigger Jellyfin point scan / refresh when a scene is updated
+    triggeredBy:
+      - Scene.Update.Post
