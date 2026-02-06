@@ -1,5 +1,5 @@
 name: Open in Jellyfin
-description: Adds a button on Scene page toolbar to open a matching URL (e.g. Jellyfin).
+description: Adds a button on Scene page toolbar to open a matching URL (Jellyfin).
 version: 1.0.0
 
 ui:
