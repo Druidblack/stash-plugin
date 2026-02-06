@@ -31,7 +31,7 @@ To add data, you need the [Jellyfin.Plugin.Stash](https://github.com/DirtyRacer1
 
 The plugin can add a link to jellyfin to the stash data.
 
-In order for spot scanning to work, the video must already have been added to jellyfin (it may not have metadata, the main thing is that it has a name. You can even share theporndb).
+In order for spot scanning to work, the video must already have been added to jellyfin (it may not have metadata, the main thing is that it has a name).
 
 <img width="691" height="902" alt="545604929-88299a26-47a5-4ed3-b846-5879f0412689" src="https://github.com/user-attachments/assets/931c2ed2-5d2f-4a88-85aa-6b1fe38db59f" />
 
