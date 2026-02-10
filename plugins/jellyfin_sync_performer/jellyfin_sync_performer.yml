@@ -1,6 +1,5 @@
 name: Jellyfin Sync (Performer)
-description: >
-  Sync performer image and overview from Stash to matching Person in Jellyfin on performer create/update.
+description: Sync performer image and overview from Stash to matching Person in Jellyfin on performer create/update.
 version: 0.3.6.18
 interface: raw
 exec:
