@@ -1,0 +1,48 @@
+name: Jellyfin Sync (Performer)
+description: >
+  Sync performer image and overview from Stash to matching Person in Jellyfin on performer create/update.
+version: 0.3.6.18
+interface: raw
+exec:
+  - python3
+  - "{pluginDir}/jellyfin_sync_performer.py"
+errLog: error
+
+settings:
+  jellyfin_url:
+    displayName: Jellyfin URL
+    description: Base URL of Jellyfin server (e.g. http://192.168.1.201:8096)
+    type: STRING
+  jellyfin_api_key:
+    displayName: Jellyfin API key
+    description: Jellyfin dashboard → Advanced → API Keys
+    type: STRING
+  jellyfin_user_id:
+    displayName: Jellyfin user id (optional)
+    description: Optional. Improves some search endpoints. Leave empty if unsure.
+    type: STRING
+  update_image:
+    displayName: Update performer image in Jellyfin
+    description: If enabled, uploads performer image from Stash as Jellyfin Primary image.
+    type: BOOLEAN
+  update_overview:
+    displayName: Update performer fields in Jellyfin
+    description: If enabled, writes selected performer fields from Stash into Jellyfin Overview and also updates Original title, Birth/Death dates, Birth year and Birthplace.
+    type: BOOLEAN
+
+  add_jellyfin_profile_url:
+    displayName: Save Jellyfin profile link to Stash performer links
+    description: If enabled, adds/updates the matched Jellyfin Person web URL into the performer's Links/URLs field in Stash.
+    type: BOOLEAN
+tasks:
+  - name: Sync performer image to Jellyfin (manual)
+    description: Run manually if you provide performer_id via plugin args.
+    defaultArgs:
+      performer_id: ""
+
+hooks:
+  - name: Sync performer image to Jellyfin
+    description: Runs when a performer is created/updated.
+    triggeredBy:
+      - Performer.Create.Post
+      - Performer.Update.Post
