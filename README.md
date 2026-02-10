@@ -12,6 +12,14 @@ Enter URL: ``` https://druidblack.github.io/stash-plugin/main/index.yml ```
 
 Click Reload
 
+# Jellyfin Sync (Performer) (0.3.6.18)
+Sync performer image and overview from Stash to matching Person in Jellyfin on performer create/update.
+
+![performer](https://github.com/user-attachments/assets/87dbb4ca-0991-46d3-8e1c-9bcbb345197c)
+![performer_menu](https://github.com/user-attachments/assets/96970b66-070a-4036-86cd-a389cb524f42)
+
+[Jellyfin Sync (Performer)](https://github.com/Druidblack/stash-plugin/tree/main/plugins/jellyfin_sync_performer)
+
 # Open in Jellyfin 1.0.0
 Adds a button to the interface that opens a link to jellyfin
 
