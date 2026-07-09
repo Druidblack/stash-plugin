@@ -51,6 +51,7 @@ In order for spot scanning to work, the video must already have been added to je
 
 A plugin that generates a cover for jellyfin from stash images
 
+you need the [Jellyfin.Plugin.Stash](https://github.com/DirtyRacer1337/Jellyfin.Plugin.Stash) plugin.
 
 <img width="534" height="919" alt="9999" src="https://github.com/user-attachments/assets/735db2fb-aabf-467f-8d2f-e09484510613" />
 <img width="801" height="245" alt="8888" src="https://github.com/user-attachments/assets/4ca8f3e9-8685-4ef7-b930-0312a407f44e" />
