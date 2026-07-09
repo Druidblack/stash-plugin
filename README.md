@@ -28,6 +28,7 @@ Adds a button to the interface that opens a link to jellyfin
 
 
 
+
 [Open in Jellyfin](https://github.com/Druidblack/stash-plugin/tree/main/plugins/open_in_jellyfin)
 
 
@@ -45,3 +46,17 @@ In order for spot scanning to work, the video must already have been added to je
 
 
 [Jellyfin sync](https://github.com/Druidblack/stash-plugin/tree/main/plugins/jellyfin_sync)
+
+#  Jellyfin Cover Generator  0.2.3
+
+A plugin that generates a cover for jellyfin from stash images
+
+
+<img width="534" height="919" alt="9999" src="https://github.com/user-attachments/assets/735db2fb-aabf-467f-8d2f-e09484510613" />
+<img width="801" height="245" alt="8888" src="https://github.com/user-attachments/assets/4ca8f3e9-8685-4ef7-b930-0312a407f44e" />
+
+Example
+
+<img width="400" height="600" alt="scene_76740" src="https://github.com/user-attachments/assets/d2f518f5-72b9-42e4-8682-b63851ef22a0" />
+
+
