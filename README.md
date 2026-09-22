@@ -59,4 +59,8 @@ Example
 
 <img width="400" height="600" alt="scene_76740" src="https://github.com/user-attachments/assets/d2f518f5-72b9-42e4-8682-b63851ef22a0" />
 
+# File Name Title Cheker 0.4.4
+
+Checks scene titles against video filenames, compares configured GraphQL/Stash-box metadata sources, applies chosen metadata to Stash scenes, and can rename/move selected mismatches.
+
 
