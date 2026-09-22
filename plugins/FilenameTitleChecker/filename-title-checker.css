@@ -1,0 +1,587 @@
+.ftc-page {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  max-width: 1800px;
+}
+
+.ftc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ftc-header h2 {
+  margin-bottom: 0.25rem;
+}
+
+.ftc-subtitle,
+.ftc-studio,
+.ftc-path,
+.ftc-help,
+.ftc-progress-text {
+  opacity: 0.75;
+}
+
+.ftc-progress-wrap {
+  margin-bottom: 1rem;
+}
+
+.ftc-progress-text {
+  margin-bottom: 0.35rem;
+}
+
+.ftc-summary {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.ftc-summary-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.4rem;
+  padding: 0.85rem 1rem;
+}
+
+.ftc-summary-value {
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ftc-summary-label {
+  margin-top: 0.2rem;
+  opacity: 0.7;
+}
+
+.ftc-filters {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(180px, 260px) minmax(180px, 230px) minmax(250px, auto) minmax(220px, auto) auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+.ftc-checkbox-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 38px;
+  margin: 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.35rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ftc-checkbox-option input {
+  margin: 0;
+}
+
+/* v0.4.4: result page size control. */
+.ftc-page-size-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 38px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ftc-page-size-select {
+  width: 84px;
+  flex: 0 0 84px;
+}
+
+.ftc-result-count {
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.ftc-table-wrap {
+  border-radius: 0.4rem;
+  overflow-x: auto;
+}
+
+.ftc-table {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.ftc-table th,
+.ftc-table td {
+  vertical-align: middle;
+}
+
+.ftc-preview-cell {
+  width: 140px;
+}
+
+.ftc-preview {
+  display: block;
+  width: 128px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 0.3rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.ftc-preview-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ftc-title-cell {
+  min-width: 220px;
+  max-width: 360px;
+}
+
+.ftc-scene-title {
+  font-weight: 600;
+}
+
+.ftc-studio {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.ftc-file-cell {
+  min-width: 360px;
+  max-width: 720px;
+}
+
+.ftc-filename {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  overflow-wrap: anywhere;
+}
+
+.ftc-path {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.ftc-status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ftc-status-error {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.55);
+}
+
+.ftc-status-warning {
+  background: rgba(255, 193, 7, 0.18);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.ftc-status-muted {
+  background: rgba(108, 117, 125, 0.2);
+  border: 1px solid rgba(108, 117, 125, 0.5);
+}
+
+.ftc-action-cell {
+  width: 130px;
+  white-space: nowrap;
+}
+
+.ftc-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.ftc-help {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.ftc-nav-link {
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .ftc-summary {
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+  }
+
+  .ftc-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .ftc-header {
+    flex-direction: column;
+  }
+
+  .ftc-summary {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+
+  .ftc-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .ftc-preview-cell {
+    width: 100px;
+  }
+
+  .ftc-preview {
+    width: 96px;
+    height: 54px;
+  }
+}
+
+/* v0.2.0: selection and rename/move UI */
+.ftc-select-cell {
+  width: 42px;
+  min-width: 42px;
+  text-align: center;
+}
+
+.ftc-select-cell input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  cursor: pointer;
+}
+
+.ftc-select-cell input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ftc-row-selected > td {
+  background: rgba(13, 110, 253, 0.10) !important;
+}
+
+.ftc-batch-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0 0 1rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ftc-batch-count {
+  font-weight: 600;
+  min-width: 90px;
+}
+
+.ftc-batch-help {
+  opacity: 0.7;
+  font-size: 0.88rem;
+}
+
+.ftc-target {
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  color: var(--bs-success, #55b97a);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.ftc-target-label {
+  font-weight: 700;
+}
+
+.ftc-target-error {
+  color: var(--bs-warning, #e0ad4f);
+}
+
+.ftc-rename-progress {
+  margin-top: 0.25rem;
+}
+
+.ftc-operation-message {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .ftc-batch-toolbar {
+    align-items: stretch;
+  }
+
+  .ftc-batch-toolbar .btn {
+    width: 100%;
+  }
+}
+
+
+/* v0.2.1: direct page selector and studio-difference filter */
+.ftc-page-label,
+.ftc-page-total {
+  white-space: nowrap;
+}
+
+.ftc-page-select {
+  width: auto;
+  min-width: 76px;
+}
+
+.ftc-file-studio {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+.ftc-file-studio-different {
+  color: var(--bs-warning, #e0ad4f);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* v0.3.0: GraphQL / Stash-box comparison */
+.ftc-source-selector {
+  margin: 0 0 1rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.ftc-source-selector-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.ftc-source-selector-heading span,
+.ftc-source-help {
+  font-size: 0.84rem;
+  opacity: 0.72;
+}
+
+.ftc-source-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.ftc-source-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.ftc-source-option input {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ftc-action-cell .btn + .btn,
+.ftc-lookup-button {
+  margin-top: 0.4rem;
+}
+
+.ftc-graphql-detail-row > td {
+  padding-top: 0 !important;
+}
+
+.ftc-graphql-panel {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.45rem;
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.ftc-graphql-loading,
+.ftc-source-empty {
+  padding: 0.5rem 0;
+  opacity: 0.75;
+}
+
+.ftc-source-block + .ftc-source-block {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.ftc-source-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.ftc-source-endpoint {
+  max-width: 100%;
+  font-size: 0.78rem;
+  opacity: 0.58;
+  overflow-wrap: anywhere;
+}
+
+.ftc-source-error {
+  margin: 0.35rem 0 0;
+  padding: 0.5rem 0.65rem;
+}
+
+.ftc-candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 0.65rem;
+}
+
+.ftc-candidate-card {
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.035);
+  overflow-wrap: anywhere;
+}
+
+.ftc-candidate-selected {
+  border-color: var(--bs-success, #55b97a);
+  box-shadow: inset 0 0 0 1px var(--bs-success, #55b97a);
+}
+
+.ftc-candidate-number {
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.ftc-candidate-card > div:not(.ftc-candidate-actions):not(.ftc-candidate-number) {
+  margin-top: 0.18rem;
+}
+
+.ftc-field-match {
+  color: var(--bs-success, #55b97a);
+  font-weight: 600;
+}
+
+.ftc-performers-consensus {
+  color: var(--bs-warning, #ffc107);
+  font-weight: 600;
+}
+
+.ftc-candidate-tags {
+  max-height: 4.4rem;
+  overflow: hidden;
+  font-size: 0.84rem;
+  opacity: 0.82;
+}
+
+.ftc-candidate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.ftc-saved-metadata {
+  margin-bottom: 0.8rem;
+  padding: 0.65rem;
+  border: 1px solid var(--bs-success, #55b97a);
+  border-radius: 0.4rem;
+  background: rgba(40, 167, 69, 0.08);
+  overflow-wrap: anywhere;
+}
+
+.ftc-saved-title {
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+  color: var(--bs-success, #55b97a);
+}
+
+.ftc-saved-metadata .btn {
+  margin-top: 0.45rem;
+}
+
+@media (max-width: 700px) {
+  .ftc-source-selector-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ftc-source-options {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .ftc-candidate-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ftc-candidate-details {
+  margin-top: 0.45rem;
+}
+
+.ftc-candidate-details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ftc-candidate-details > div {
+  margin-top: 0.35rem;
+  white-space: pre-wrap;
+  max-height: 12rem;
+  overflow: auto;
+}
+
+.ftc-candidate-urls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+PY
+node --check /mnt/data/ftc_v030/filename-title-checker.js
+
+
+/* v0.3.1: GraphQL result images */
+.ftc-candidate-image-wrap {
+  margin: 0 0 0.65rem;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.22);
+  text-align: center;
+}
+
+.ftc-candidate-image {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.ftc-candidate-image-empty {
+  margin: 0 0 0.65rem;
+  padding: 1.25rem 0.75rem;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 0.35rem;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.58;
+}
