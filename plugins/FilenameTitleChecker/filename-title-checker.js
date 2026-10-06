@@ -316,7 +316,7 @@
     return canonicalizeTokens(tokens);
   }
 
-  function containsTokenSequence(filename, title) {
+  function tokenSequenceMatches(filename, title) {
     const fileTokens = normalizeTokens(stripExtension(filename));
     const titleTokens = normalizeTokens(title);
 
@@ -334,6 +334,18 @@
     }
 
     return false;
+  }
+
+  function containsTokenSequence(filename, title) {
+    // Punctuation is normalized into token boundaries. This means episode
+    // markers with the same season/episode numbers are equivalent regardless
+    // of separator: S2-E3, S2:E3, S2.E3 and S2E3 all normalize to
+    // ["s", "2", "e", "3"]. Different season/episode numbers remain different.
+    return tokenSequenceMatches(filename, title);
+  }
+
+  function titlesEquivalent(a, b) {
+    return normalizedText(a) === normalizedText(b);
   }
 
   function normalizedText(value) {
@@ -1622,7 +1634,7 @@
                                 const referenceTitle = fileMetadata.title || item.title;
                                 const referenceStudio = fileMetadata.studio || item.studio;
                                 const referenceDate = fileMetadata.date || item.date;
-                                const titleMatchesFile = Boolean(candidate.title && referenceTitle) && normalizedText(candidate.title) === normalizedText(referenceTitle);
+                                const titleMatchesFile = Boolean(candidate.title && referenceTitle) && titlesEquivalent(candidate.title, referenceTitle);
                                 const studioMatchesFile = Boolean(candidate.studio && referenceStudio) && studioNamesEquivalent(candidate.studio, referenceStudio);
                                 const dateMatchesFile = Boolean(candidate.date && referenceDate) && candidate.date === referenceDate;
                                 const performersSignature = performerSetSignature(candidate.performers);
@@ -2021,6 +2033,7 @@
   window.FilenameTitleChecker = Object.freeze({
     normalizeTokens,
     containsTokenSequence,
+    titlesEquivalent,
     normalizedStudioKey,
     studioNamesEquivalent,
     extractStudioFromFilename,

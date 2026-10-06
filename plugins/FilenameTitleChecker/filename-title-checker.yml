@@ -1,6 +1,6 @@
 name: Filename Title Checker
 description: Checks scene titles against video filenames, compares configured GraphQL/Stash-box metadata sources, applies chosen metadata to Stash scenes, and can rename/move selected mismatches.
-version: 0.4.4
+version: 0.4.6
 ui:
   javascript:
     - filename-title-checker.js
