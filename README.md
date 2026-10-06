@@ -34,6 +34,11 @@ The buttons to open the jellyfin link and generate an cover for jellyfin.
 
 <img width="137" height="49" alt="buttom" src="https://github.com/user-attachments/assets/0c9b28e7-25da-4115-ba4b-c5de4153a535" />
 
+Tasks
+
+<img width="854" height="326" alt="задачи" src="https://github.com/user-attachments/assets/0b165d6f-ef64-4c3e-840a-8446cfe38820" />
+
+
 
 # File Name Title Cheker 0.4.4
 
