@@ -1,11 +1,14 @@
 name: Jellyfin Sync
-description: Refresh the exact Jellyfin item linked in a Stash scene URL. No title, filename, path, date, or performer search is used.
-version: 0.3.0
+description: Direct Jellyfin sync for scenes with Jellyfin URLs; safe fallback search when a scene has no Jellyfin URL. Performer sync remains direct-URL-only. Syncs favorites, optional reliable Stash resume position, optional generated Jellyfin covers with configurable upload delay, local saving and manual re-upload task, performer Career Start/End metadata, and adds Open in Jellyfin / Generate cover buttons. Includes bulk cover generation and automatic cover directory exclusions.
+version: 0.3.26
 url: https://example.invalid/jellyfin-sync
 exec:
   - python3
   - "{pluginDir}/JellyfinSync.py"
 interface: raw
+ui:
+  javascript:
+    - JellyfinSync.js
 settings:
   jellyfinBaseUrl:
     displayName: Jellyfin base URL
@@ -15,16 +18,64 @@ settings:
     displayName: Jellyfin API key
     description: Jellyfin API key (Dashboard -> API Keys).
     type: STRING
+  jellyfinUserId:
+    displayName: Jellyfin user ID
+    description: "Favorites in Jellyfin are per-user. Enter the 32-character Jellyfin user ID. If the server has exactly one user, it can be detected automatically."
+    type: STRING
   verifyTls:
     displayName: Verify TLS certificates
     description: Enable for a valid HTTPS certificate. Disable for local/self-signed HTTPS.
     type: BOOLEAN
   skipUnorganized:
     displayName: Process only organized scenes
-    description: "If enabled, scenes with Organized=false are ignored."
+    description: "If enabled, scenes with Organized=false are ignored. Does not affect performers."
     type: BOOLEAN
+  updatePerformerMetadata:
+    displayName: Update performer information in Jellyfin
+    description: Update the exact Jellyfin Person linked in the Stash performer URLs. No name or alias search is used.
+    type: BOOLEAN
+  updatePerformerImage:
+    displayName: Update performer image in Jellyfin
+    description: Upload the Stash performer image as Primary image for the exact Jellyfin Person linked in performer URLs.
+    type: BOOLEAN
+  syncPlaybackPosition:
+    displayName: Sync playback position to Jellyfin
+    description: "When enabled, pausing or finishing a video in the Stash web player copies the exact player/Stash resume position to Jellyfin PlaybackPositionTicks for the configured Jellyfin user. Watched state and play count are not changed."
+    type: BOOLEAN
+  generateJellyfinCovers:
+    displayName: Generate and upload Jellyfin covers
+    description: "When enabled, Scene.Update.Post creates an 800x1200 poster from the Stash scene screenshot, overlays the Stash studio logo at the bottom-right when available, and uploads it as the Primary image of the exact Jellyfin item already resolved by this plugin."
+    type: BOOLEAN
+  coverUploadDelaySeconds:
+    displayName: Cover upload delay seconds
+    description: "How long to wait after queuing a Jellyfin metadata refresh before uploading a generated cover. Helps prevent Jellyfin from replacing the uploaded poster with refreshed artwork. Default 5 seconds."
+    type: NUMBER
+  coverExcludedDirectories:
+    displayName: Exclude directories from automatic cover generation
+    description: "Stash media directories where Jellyfin Sync must not automatically apply its generated 800x1200 covers. Enter full paths as seen in Stash (not Jellyfin), separated by semicolons; subdirectories are also excluded. The exclusion applies to automatic generated covers, Generate covers for all Stash videos, and Upload saved generated covers to Jellyfin. Normal Jellyfin metadata/image refresh still works, and the single-scene manual cover button can override the exclusion. Example: /data/movies;/data/anime"
+    type: STRING
+  verboseLogging:
+    displayName: Detailed logging
+    description: "Off (default): log only actual sync changes, cover uploads, task progress, warnings and errors. On: additionally log IDs, unchanged values, skipped operations and refresh requests for troubleshooting."
+    type: BOOLEAN
+tasks:
+  - name: Generate covers for all Stash videos
+    description: "Manual bulk task. Generates/saves/uploads an 800x1200 cover for each eligible scene without refreshing Jellyfin metadata or waiting. Respects excluded directories and organized-only setting. Existing posters for eligible videos are replaced."
+    defaultArgs:
+      mode: generateAllSceneCovers
+
+  - name: Upload saved generated covers to Jellyfin
+    description: Manual task. Scans pluginDir/generated for scene_<id>.jpg/png/webp posters previously created by this plugin and uploads them to the matching Jellyfin items.
+    defaultArgs:
+      mode: uploadGeneratedCovers
+
 hooks:
   - name: Scene update
-    description: Refresh the Jellyfin item referenced by a URL in the updated Stash scene
+    description: Use the exact Jellyfin URL when present; otherwise find the video with the original fallback search, refresh it, store its Jellyfin URL, and sync 5-star rating to Jellyfin favorite
     triggeredBy:
       - Scene.Update.Post
+  - name: Performer sync
+    description: Sync performer favorite independently; metadata/image are updated only for non-favorite performer changes and only when a Jellyfin URL already exists
+    triggeredBy:
+      - Performer.Create.Post
+      - Performer.Update.Post
