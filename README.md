@@ -12,52 +12,28 @@ Enter URL: ``` https://druidblack.github.io/stash-plugin/main/index.yml ```
 
 Click Reload
 
-# Jellyfin Sync (Performer) (0.3.6.18)
-Sync performer image and overview from Stash to matching Person in Jellyfin on performer create/update.
 
-![performer](https://github.com/user-attachments/assets/87dbb4ca-0991-46d3-8e1c-9bcbb345197c)
-![performer_menu](https://github.com/user-attachments/assets/96970b66-070a-4036-86cd-a389cb524f42)
+# Jellyfin sync 0.3.26
 
-[Jellyfin Sync (Performer)](https://github.com/Druidblack/stash-plugin/tree/main/plugins/jellyfin_sync_performer)
+A plugin for synchronizing data from Stash to Jellyfin.
+It can synchronize selected actors, their information, and the video playback position; it can generate a cover in Jellyfin format either in bulk or on a per‑actor basis.
 
-# Open in Jellyfin 1.0.0
-Adds a button to the interface that opens a link to jellyfin
-
-<img width="771" height="147" alt="545563538-f40d4815-88b5-4c77-bfec-ef068032c049" src="https://github.com/user-attachments/assets/12789fce-6f85-41d6-8704-769acd76652c" />
-<img width="452" height="225" alt="545563782-8e4f9240-b045-4498-b266-8040f81918f9" src="https://github.com/user-attachments/assets/6431bb37-8c83-4bfe-ad1b-be4568b6b2e6" />
-
-
-
-
-[Open in Jellyfin](https://github.com/Druidblack/stash-plugin/tree/main/plugins/open_in_jellyfin)
-
-
-# Jellyfin sync 0.3.0
-
-A plugin that, when updating scene data in stash, sends a request for a point rescan of the video to update the metadata.
-
-To add data, you need the [JF To Stash Sync](https://github.com/Druidblack/Jellyfin.Plugin.JF_To_Stash_Sync) plugin.
+For two-way synchronization, use [JF To Stash Sync](https://github.com/Druidblack/Jellyfin.Plugin.JF_To_Stash_Sync) plugin.
 
 The plugin can add a link to jellyfin to the stash data.
-
-In order for spot scanning to work, the video must already have been added to jellyfin (it may not have metadata, the main thing is that it has a name).
-
 
 
 [Jellyfin sync](https://github.com/Druidblack/stash-plugin/tree/main/plugins/jellyfin_sync)
 
-#  Jellyfin Cover Generator  0.2.3
-
-A plugin that generates a cover for jellyfin from stash images
-
-you need the [Jellyfin.Plugin.Stash](https://github.com/DirtyRacer1337/Jellyfin.Plugin.Stash) plugin.
-
-<img width="534" height="919" alt="9999" src="https://github.com/user-attachments/assets/735db2fb-aabf-467f-8d2f-e09484510613" />
-<img width="801" height="245" alt="8888" src="https://github.com/user-attachments/assets/4ca8f3e9-8685-4ef7-b930-0312a407f44e" />
 
 Example
 
 <img width="400" height="600" alt="scene_76740" src="https://github.com/user-attachments/assets/d2f518f5-72b9-42e4-8682-b63851ef22a0" />
+
+The buttons to open the jellyfin link and generate an cover for jellyfin.
+
+<img width="137" height="49" alt="buttom" src="https://github.com/user-attachments/assets/0c9b28e7-25da-4115-ba4b-c5de4153a535" />
+
 
 # File Name Title Cheker 0.4.4
 
